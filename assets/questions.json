@@ -1,0 +1,92 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "text": "¿Cuándo tuvo lugar la primera Copa Mundial de Fútbol?",
+            "options": {
+                "a": "En 1920",
+                "b": "En 1930",
+                "c": "En 1940",
+                "d": "En 1950"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 2,
+            "text": "¿Quién es el máximo goleador de la historia de la Copa Mundial de Fútbol?",
+            "options": {
+                "a": "Miroslav Klose",
+                "b": "Ronaldo Nazario",
+                "c": "Gerd Müller",
+                "d": "Pelé"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 3,
+            "text": "¿Qué animal fue el escogido para ilustrar la mascota del Mundial de Rusia?",
+            "options": {
+                "a": "Un perro",
+                "b": "Un gato",
+                "c": "Un lobo",
+                "d": "Un loro"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 4,
+            "text": "Hablando de mascotas, ¿cuál de estas mascotas no pertenece a la historia del Mundial?",
+            "options": {
+                "a": "Fuleco",
+                "b": "Footix",
+                "c": "Naranjito",
+                "d": "TopTip"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 5,
+            "text": "¿A qué futbolista se conoce con el apodo de Harry Potter?",
+            "options": {
+                "a": "Luis Arturo Hernández Carreón",
+                "b": "Diego Maradona",
+                "c": "Just Fontaine",
+                "d": "Ricardo Quaresma"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 6,
+            "text": "¿Dónde tendrá lugar la Copa Mundial de Fútbol de 2022?",
+            "options": {
+                "a": "En Australia",
+                "b": "En Qatar",
+                "c": "En Islandia",
+                "d": "En Suiza"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 7,
+            "text": "Cada 4 años, una empresa diferente fabrica el cuero con el que se juega el mundial.",
+            "options": {
+                "a": "Verdadero",
+                "b": "Falso",
+                "c": "-",
+                "d": "-"
+            },
+            "answer": "a"
+        },
+        {
+            "id": 8,
+            "text": "¿Cuántos mundiales de fútbol ha ganado España?",
+            "options": {
+                "a": "1",
+                "b": "2",
+                "c": "3",
+                "d": "4"
+            },
+            "answer": "a"
+        }
+    ]
+}
