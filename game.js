@@ -5,11 +5,12 @@ var current_screen = 'START'
 var current_streak = 0
 var streak_to_win = 3
 var current_question
-var time_per_question = 15
-var question_timeleft = time_per_question;
+var time_per_question_s = 15
+var question_timeleft_s = time_per_question_s;
 var question_timer = setInterval(update_progress_bar, 1000);
-var max_finish_timeleft = 10
-var finish_timeleft = max_finish_timeleft
+var finish_timeout
+var time_before_reset_ms = 5000
+var question_list = questions.questions
 
 document.addEventListener('keydown', (event) => {
     console.log(`current screen: ${current_screen}`)
@@ -54,6 +55,12 @@ function reset_game() {
     current_screen = 'START'
     current_streak = 0
     start_screen()
+    location.reload()
+}
+
+function reset_by_time(){
+    clearTimeout(finish_timeout)
+    reset_game()
 }
 
 function start_screen() {
@@ -72,11 +79,12 @@ function new_question_screen() {
     console.log("new_question_screen")
     var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-    question_list = questions.questions
-    current_question = question_list[Math.floor(Math.random() * question_list.length)]
+    var current_question_index = Math.floor(Math.random() * question_list.length)
+    current_question = question_list[current_question_index]
+    question_list.splice(current_question_index, 1)
     document.body.innerHTML = `
     <img id="question-image" src="assets/${background}">
-    <progress id="progress-bar" value="${time_per_question}" max="${time_per_question}" id="progressBar"></progress>
+    <progress id="progress-bar" value="${time_per_question_s}" max="${time_per_question_s}" id="progressBar"></progress>
     <div id="question-text">
     ${current_question.text}
     <br><br><br><br>
@@ -86,6 +94,7 @@ function new_question_screen() {
 }
 
 function you_lost_screen() {
+    finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
     var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
@@ -103,6 +112,7 @@ function you_lost_screen() {
 }
 
 function time_out_screen() {
+    finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
     var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
@@ -120,6 +130,7 @@ function time_out_screen() {
 }
 
 function you_win_screen() {
+    finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
     var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
@@ -136,27 +147,17 @@ function you_win_screen() {
 }
 
 function update_progress_bar() {
-    if (question_timeleft <= 0) {
+    if (question_timeleft_s <= 0) {
         time_out_screen();
         reset_question_timer()
     }
     if (current_screen == 'IN_QUESTION') {
-        document.getElementById("progress-bar").value = question_timeleft;
-        question_timeleft -= 1;
+        document.getElementById("progress-bar").value = question_timeleft_s;
+        question_timeleft_s -= 1;
     }
 }
 
 function reset_question_timer() {
-    question_timeleft = time_per_question
-}
-
-function reset_by_time() {
-    console.log("reset by time")
-    if (finish_timeleft <= 0) {
-        reset_game()
-    }
-    if (current_screen == 'FINISHED') {
-        finish_timeleft -= 1;
-    }
+    question_timeleft_s = time_per_question_s
 }
 
