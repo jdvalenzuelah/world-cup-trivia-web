@@ -9,7 +9,7 @@ var time_per_question_s = 15
 var question_timeleft_s = time_per_question_s;
 var question_timer = setInterval(update_progress_bar, 1000);
 var finish_timeout
-var time_before_reset_ms = 5000
+var time_before_reset_ms = 60000
 var question_list = questions.questions
 
 document.addEventListener('keydown', (event) => {
