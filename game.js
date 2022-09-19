@@ -137,7 +137,7 @@ function you_win_screen() {
     <img id="question-image" src="assets/${background}">
     <div id="finish-text"> 
     <br><br><br><br><br>
-    ¡Felicidades, haz ganado!
+    ¡Felicidades, ganaste!
     <br><br><br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
