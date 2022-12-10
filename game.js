@@ -143,6 +143,7 @@ function you_win_screen() {
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
+    <br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
     `
