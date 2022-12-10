@@ -106,6 +106,9 @@ function you_lost_screen() {
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
     `
@@ -140,6 +143,9 @@ function you_win_screen() {
         </video>
     </div>
     <div id="finish-text"> 
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
