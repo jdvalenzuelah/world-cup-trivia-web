@@ -27,7 +27,7 @@ let questions = {
         {
             "id": 5,
             "text": "¿A qué futbolista se conoce con el apodo de Harry Potter?",
-            "options": "A. Luis Arturo Hernández Carreón<br><br> B. Diego Maradona<br><br>  C. Just Fontaine<br><br> D. Ricardo Quaresma<br><br>",
+            "options": "A. Luis Arturo Hernández Carreón<br><br> B. Diego Maradona<br><br>  C. Just Fontaine<br><br> D. Zinedine Zidane<br><br>",
             "answer": "d"
         },
         {
