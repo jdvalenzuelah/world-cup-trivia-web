@@ -6,10 +6,13 @@
 </head>
 
 <body>
-    <video id="background-video" autoplay muted loop>
-        <source src="assets/start_scene_720.mp4" type="video/mp4">
-    </video>
+    <img id="question-image" src="assets/background.png">
     <div id="start-text">Presiona "Start" para jugar</div>
+    <div id="lost-video-div" style="display: none;">
+        <video id="win-video" autoplay muted loop>
+            <source src="assets/lost.mp4" type="video/mp4">
+        </video>
+    </div>
 </body>
 <script src="questions.js"></script>
 <script src="game.js"></script>

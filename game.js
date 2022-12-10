@@ -77,7 +77,7 @@ function new_question_screen() {
     }
     reset_question_timer()
     console.log("new_question_screen")
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
+    var backgrounds = Array('background.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     var current_question_index = Math.floor(Math.random() * question_list.length)
     current_question = question_list[current_question_index]
@@ -95,15 +95,17 @@ function new_question_screen() {
 
 function you_lost_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <div id="lost-video-div">
+        <video id="lost-video" autoplay muted loop>
+            <source src="assets/lost.mp4" type="video/mp4">
+        </video>
+    </div>
     <div id="finish-text"> 
-    ¡Respuesta incorrecta!
-    <br><br>
-    Gracias por participar.
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
     `
@@ -113,7 +115,7 @@ function you_lost_screen() {
 
 function time_out_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
+    var backgrounds = Array('background.png')
     var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
     <img id="question-image" src="assets/${background}">
@@ -131,14 +133,16 @@ function time_out_screen() {
 
 function you_win_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <div id="win-video-div">
+        <video id="win-video" autoplay muted loop>
+            <source src="assets/win.mp4" type="video/mp4">
+        </video>
+    </div>
     <div id="finish-text"> 
     <br><br><br><br><br>
-    ¡Felicidades, ganaste!
-    <br><br><br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
     `
@@ -159,5 +163,13 @@ function update_progress_bar() {
 
 function reset_question_timer() {
     question_timeleft_s = time_per_question_s
+}
+
+function hide(id) {
+    document.getElementById(id).setAttribute("style", "display: none;");
+}
+
+function show(id) {
+    document.getElementById(id).setAttribute("style", "");
 }
 
