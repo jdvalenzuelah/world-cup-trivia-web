@@ -41,6 +41,10 @@ document.addEventListener('keydown', (event) => {
             current_streak += 1
             new_question_screen()
         }
+        else if (key == 'z') {
+            current_streak += 1
+            new_question_screen()
+        }
         else if (current_streak >= streak_to_win) {
             you_win_screen()
         }
@@ -85,6 +89,12 @@ function new_question_screen() {
     document.body.innerHTML = `
     <img id="question-image" src="assets/${background}">
     <progress id="progress-bar" value="${time_per_question_s}" max="${time_per_question_s}" id="progressBar"></progress>
+    <video id="lost-video" autoplay muted loop style="display: none;">
+        <source src="assets/lost.mp4" type="video/mp4">
+    </video>
+    <video id="win-video" autoplay muted loop style="display: none;">
+        <source src="assets/win.mp4" type="video/mp4">
+    </video>
     <div id="question-text">
     ${current_question.text}
     <br><br><br><br>
@@ -95,22 +105,11 @@ function new_question_screen() {
 
 function you_lost_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    document.body.innerHTML = `
-    <div id="lost-video-div">
-        <video id="lost-video" autoplay muted loop>
-            <source src="assets/lost.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div id="finish-text"> 
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    Presiona "Reset" para jugar de nuevo
-    </div>
-    `
+    console.log("You lost")
+    hide("progress-bar")
+    hide("question-text")
+    hide("win-video")
+    show("lost-video")
     current_screen = 'FINISHED'
     current_streak = 0
 }
@@ -134,23 +133,12 @@ function time_out_screen() {
 }
 
 function you_win_screen() {
+    console.log("You won")
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    document.body.innerHTML = `
-    <div id="win-video-div">
-        <video id="win-video" autoplay muted loop>
-            <source src="assets/win.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div id="finish-text"> 
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-    Presiona "Reset" para jugar de nuevo
-    </div>
-    `
+    hide("progress-bar")
+    hide("question-text")
+    hide("lost-video")
+    show("win-video")
     current_screen = 'FINISHED'
     current_streak = 0
 }

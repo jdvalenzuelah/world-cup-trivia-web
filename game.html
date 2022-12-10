@@ -8,11 +8,13 @@
 <body>
     <img id="question-image" src="assets/background.png">
     <div id="start-text">Presiona "Start" para jugar</div>
-    <div id="lost-video-div" style="display: none;">
-        <video id="win-video" autoplay muted loop>
-            <source src="assets/lost.mp4" type="video/mp4">
-        </video>
-    </div>
+    <video id="lost-video" autoplay muted loop style="display: none;">
+        <source src="assets/lost.mp4" type="video/mp4">
+    </video>
+    <video id="win-video" autoplay muted loop style="display: none;">
+        <source src="assets/win.mp4" type="video/mp4">
+    </video>
+
 </body>
 <script src="questions.js"></script>
 <script src="game.js"></script>
