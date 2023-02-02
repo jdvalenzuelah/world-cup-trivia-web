@@ -77,13 +77,11 @@ function new_question_screen() {
     }
     reset_question_timer()
     console.log("new_question_screen")
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     var current_question_index = Math.floor(Math.random() * question_list.length)
     current_question = question_list[current_question_index]
     question_list.splice(current_question_index, 1)
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <img id="question-image" src="assets/background.png">
     <progress id="progress-bar" value="${time_per_question_s}" max="${time_per_question_s}" id="progressBar"></progress>
     <div id="question-text">
     ${current_question.text}
@@ -95,10 +93,8 @@ function new_question_screen() {
 
 function you_lost_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <img id="question-image" src="assets/background.png">
     <div id="finish-text"> 
     ¡Respuesta incorrecta!
     <br><br>
@@ -113,10 +109,8 @@ function you_lost_screen() {
 
 function time_out_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <img id="question-image" src="assets/background.png">
     <div id="finish-text"> 
     ¡Se acabó el tiempo!
     <br><br>
@@ -131,10 +125,8 @@ function time_out_screen() {
 
 function you_win_screen() {
     finish_timeout = setTimeout(reset_by_time, time_before_reset_ms)
-    var backgrounds = Array('background1.png', 'background2.png', 'background3.png')
-    var background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.body.innerHTML = `
-    <img id="question-image" src="assets/${background}">
+    <img id="question-image" src="assets/background.png">
     <div id="finish-text"> 
     <br><br><br><br><br>
     ¡Felicidades, ganaste!
