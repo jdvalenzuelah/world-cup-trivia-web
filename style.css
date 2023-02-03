@@ -1,15 +1,3 @@
-.options {
-    cursor:pointer;
-}
-
-.options button:not(:last-child) {
-    border-bottom: none; /* Prevent double borders */
-  }
-  
-  /* Add a background color on hover */
-  .options button:hover {
-    background-color: #3e8e41;
-  }
 
 #background-video {
     height: 100vh;
@@ -106,7 +94,6 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     align-items: center;
     align-content: center;
@@ -123,7 +110,6 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     align-items: center;
     align-content: center;
@@ -140,7 +126,6 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     align-items: center;
     align-content: center;
@@ -150,6 +135,18 @@
     justify-content: center;
     margin-top: 2%;
     cursor:pointer;
+}
+
+.buttonBlack {
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.buttonGreen {
+    background: rgba(0, 255, 0, 0.65);
+}
+
+.buttonRed {
+    background: rgba(255, 0, 0, 0.65);
 }
 
 #progress-bar {

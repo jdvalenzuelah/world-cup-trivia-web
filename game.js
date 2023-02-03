@@ -5,6 +5,7 @@ var current_screen = 'START'
 var current_streak = 0
 var streak_to_win = 3
 var current_question
+var n_questions_displayed = 0
 var time_per_question_s = 15
 var question_timeleft_s = time_per_question_s;
 var question_timer = setInterval(update_progress_bar, 1000);
@@ -45,7 +46,7 @@ document.addEventListener('keydown', (event) => {
             you_win_screen()
         }
         else {
-            you_lost_screen()
+            n_questions_displayed += 1
         }
     }
 }, false);
@@ -85,7 +86,6 @@ function new_question_screen() {
     var current_question_index = Math.floor(Math.random() * question_list.length)
     current_question = question_list[current_question_index]
     question_list.splice(current_question_index, 1)
-    console.log(current_question.answer)
     document.body.innerHTML = `
     <img id="question-image" src="assets/background.png">
     <progress id="progress-bar" value="${time_per_question_s}" max="${time_per_question_s}" id="progressBar"></progress>
@@ -93,9 +93,9 @@ function new_question_screen() {
     ${current_question.text}
     </div>
     <div class="options" id="options-div">
-            <button class="option" id="a" onclick="checkAnswer(a, ${current_question.answer})">${current_question.options["a"]}</button>
-            <button class="option" id="b" onclick="checkAnswer(b, ${current_question.answer})">${current_question.options["b"]}</button>
-            <button class="option" id="c" onclick="checkAnswer(c, ${current_question.answer})">${current_question.options["c"]}</button>            
+            <button class="buttonBlack" id="a" onclick="checkAnswer(a, ${current_question.answer})">${current_question.options["a"]}</button>
+            <button class="buttonBlack" id="b" onclick="checkAnswer(b, ${current_question.answer})">${current_question.options["b"]}</button>
+            <button class="buttonBlack" id="c" onclick="checkAnswer(c, ${current_question.answer})">${current_question.options["c"]}</button>            
     </div>
     `
 }
@@ -103,10 +103,29 @@ function new_question_screen() {
 function checkAnswer(answer, chosenOption) {
     if (answer === chosenOption) {
         current_streak += 1
-        new_question_screen()
+        turnButtonGreen(answer.id)
+        setTimeout(()=>{new_question_screen()}, 1000)
     } else {
-        you_lost_screen()
+        turnButtonRed(answer.id)
+        n_questions_displayed += 1
+        if (n_questions_displayed >= 3){
+            setTimeout(()=>{you_lost_screen()}, 1000)
+        } else {
+            setTimeout(()=>{new_question_screen()}, 1000)
+        }
     }
+}
+
+function turnButtonGreen(id) {
+    console.log(`green id=${id}`)
+    var element = document.getElementById(id)
+    element.className = "buttonGreen"
+}
+
+function turnButtonRed(id) {
+    console.log(`red id=${id}`)
+    var element = document.getElementById(id)
+    element.className = "buttonRed"
 }
 
 function you_lost_screen() {
