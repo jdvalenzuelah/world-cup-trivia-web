@@ -1,6 +1,15 @@
-body {
-    cursor: none;
+.options {
+    cursor:pointer;
 }
+
+.options button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .options button:hover {
+    background-color: #3e8e41;
+  }
 
 #background-video {
     height: 100vh;
@@ -31,13 +40,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     overflow: hidden;
     align-items: center;
     align-content: center;
     width: 100%;
-    height: 97%;
+    height: 40%;
     display: flex;
     justify-content: center;
 }
@@ -47,23 +56,23 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     overflow: hidden;
     align-items: center;
     align-content: center;
     width: 100%;
-    height: 100%;
+    height: 40%;
     display: flex;
     justify-content: center;
 }
 
-#start-text {
+#startButton {
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.65);
     vertical-align: middle;
     align-items: center;
     align-content: center;
@@ -72,6 +81,75 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 110%;
+    cursor:pointer;
+}
+
+#restartButton {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.65);
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    cursor:pointer;
+}
+
+#a {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.65);
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    cursor:pointer;
+}
+
+#b {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.65);
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    cursor:pointer;
+}
+
+#c {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.65);
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    cursor:pointer;
 }
 
 #progress-bar {

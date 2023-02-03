@@ -50,6 +50,11 @@ document.addEventListener('keydown', (event) => {
     }
 }, false);
 
+function startGame() {
+    current_screen = 'IN_QUESTION'
+    new_question_screen()
+}
+
 function reset_game() {
     console.log("reset game")
     current_screen = 'START'
@@ -80,15 +85,28 @@ function new_question_screen() {
     var current_question_index = Math.floor(Math.random() * question_list.length)
     current_question = question_list[current_question_index]
     question_list.splice(current_question_index, 1)
+    console.log(current_question.answer)
     document.body.innerHTML = `
     <img id="question-image" src="assets/background.png">
     <progress id="progress-bar" value="${time_per_question_s}" max="${time_per_question_s}" id="progressBar"></progress>
     <div id="question-text">
     ${current_question.text}
-    <br><br><br><br>
-    ${current_question.options}
+    </div>
+    <div class="options" id="options-div">
+            <button class="option" id="a" onclick="checkAnswer(a, ${current_question.answer})">${current_question.options["a"]}</button>
+            <button class="option" id="b" onclick="checkAnswer(b, ${current_question.answer})">${current_question.options["b"]}</button>
+            <button class="option" id="c" onclick="checkAnswer(c, ${current_question.answer})">${current_question.options["c"]}</button>            
     </div>
     `
+}
+
+function checkAnswer(answer, chosenOption) {
+    if (answer === chosenOption) {
+        current_streak += 1
+        new_question_screen()
+    } else {
+        you_lost_screen()
+    }
 }
 
 function you_lost_screen() {
@@ -99,9 +117,8 @@ function you_lost_screen() {
     ¡Respuesta incorrecta!
     <br><br>
     Gracias por participar.
-    <br><br><br><br><br><br><br><br><br><br>
-    Presiona "Reset" para jugar de nuevo
     </div>
+    <button id="restartButton" onclick="reset_game()">Jugar de nuevo</button>
     `
     current_screen = 'FINISHED'
     current_streak = 0
@@ -115,9 +132,10 @@ function time_out_screen() {
     ¡Se acabó el tiempo!
     <br><br>
     Gracias por participar.
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     Presiona "Reset" para jugar de nuevo
     </div>
+    <button id="restartButton" onclick="reset_game()">Jugar de nuevo</button>
     `
     current_screen = 'FINISHED'
     current_streak = 0
@@ -131,8 +149,8 @@ function you_win_screen() {
     <br><br><br><br><br>
     ¡Felicidades, ganaste!
     <br><br><br><br><br><br><br>
-    Presiona "Reset" para jugar de nuevo
     </div>
+    <button id="restartButton" onclick="reset_game()">Jugar de nuevo</button>
     `
     current_screen = 'FINISHED'
     current_streak = 0
