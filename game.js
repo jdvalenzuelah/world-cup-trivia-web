@@ -60,7 +60,6 @@ function reset_game() {
     console.log("reset game")
     current_screen = 'START'
     current_streak = 0
-    start_screen()
     location.reload()
 }
 
@@ -101,13 +100,20 @@ function new_question_screen() {
 }
 
 function checkAnswer(answer, chosenOption) {
+    n_questions_displayed += 1
     if (answer === chosenOption) {
         current_streak += 1
         turnButtonGreen(answer.id)
-        setTimeout(()=>{new_question_screen()}, 1000)
+        if(current_streak >= 3){
+            setTimeout(()=>{you_win_screen()}, 1000)
+        }
+        else if (n_questions_displayed >= 3){
+            setTimeout(()=>{you_lost_screen()}, 1000)
+        } else {
+            setTimeout(()=>{new_question_screen()}, 1000)
+        }    
     } else {
         turnButtonRed(answer.id)
-        n_questions_displayed += 1
         if (n_questions_displayed >= 3){
             setTimeout(()=>{you_lost_screen()}, 1000)
         } else {
@@ -133,9 +139,7 @@ function you_lost_screen() {
     document.body.innerHTML = `
     <img id="question-image" src="assets/background.png">
     <div id="finish-text"> 
-    ¡Respuesta incorrecta!
-    <br><br>
-    Gracias por participar.
+    ¡Gracias por participar!
     </div>
     <button id="restartButton" onclick="reset_game()">Jugar de nuevo</button>
     `
@@ -149,10 +153,8 @@ function time_out_screen() {
     <img id="question-image" src="assets/background.png">
     <div id="finish-text"> 
     ¡Se acabó el tiempo!
-    <br><br>
+    <br>
     Gracias por participar.
-    <br><br><br><br><br><br><br>
-    Presiona "Reset" para jugar de nuevo
     </div>
     <button id="restartButton" onclick="reset_game()">Jugar de nuevo</button>
     `
